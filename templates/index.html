@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Music Player</title>
+  </head>
+  <body>
+    <div id="player">
+      <audio id="audio" controls>
+        <source id="audio-source" src="" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $.getJSON('/stream/now_playing', function(data) {
+          $('#audio-source').attr('src', '/stream/live');
+          $('#audio')[0].load();
+          $('#audio')[0].play();
+        });
+      });
+    </script>
+  </body>
+</html>
